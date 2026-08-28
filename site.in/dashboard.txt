@@ -1,0 +1,11 @@
+<h1>Dashboard</h1>
+
+<p>
+Live state from the owning host, captured by a project-provided
+<code>scripts/site-state-fetch.sh</code> (see the homelab project pages
+conventions: standard page set). For Elseon this page will later report
+toolchain state: LLVM version pinned, lexer/parser conformance test counts,
+and kernel-tree compile status. This scaffold ships a placeholder.
+</p>
+
+<p>Live state: not configured.</p>

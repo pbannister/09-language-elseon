@@ -1,0 +1,25 @@
+<h1>Project status</h1>
+
+<p>
+Elseon — "son of elsewhere" — is a systems programming language for the
+Linux kernel and embedded systems. PFE (Proudly Found Elsewhere): C headers
+are first-class semantic modules. NIH inverted: we do not believe in "Not
+Invented Here"; we believe in "Found Elsewhere and Made Better".
+</p>
+
+<p>
+Kernel-ready: no garbage collection, no hidden allocations, no hidden
+control flow, deterministic memory layout. Formally close to C and
+JavaScript for minimal cognitive friction; LLVM backend for code
+generation; simple, but incorporating the lessons of object-oriented
+languages since the 1980s.
+</p>
+
+<h2>Status</h2>
+
+<ul>
+  <li>Status: active.</li>
+  <li>What's working: the project scaffold — language design document,
+      feature requirements, phases, and site build.</li>
+  <li>Current phase: 1 — language specification (started).</li>
+</ul>
