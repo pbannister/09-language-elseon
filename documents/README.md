@@ -14,6 +14,7 @@ The LLM does not load these files as project rules.
 - `05-lessons-from-MI25.md` — lessons from the MI25 fan-service project.
 - `06-project-pages.md` — project-pages publishing conventions (summary; canonical version in the homelab).
 - `07-elseon-language.md` — the Elseon language design: philosophy, the kernel test, syntax family, OOP lessons, and C-header ingestion.
+- `08-related-work.md` — survey of prior attempts at an improved C, the exclusions (Rust, D), and the ideas Elseon borrows.
 
 ## Canonical Files
 
@@ -27,3 +28,4 @@ The following filenames are canonical and must not be renamed or duplicated with
 - `05-lessons-from-MI25.md`
 - `06-project-pages.md`
 - `07-elseon-language.md`
+- `08-related-work.md`

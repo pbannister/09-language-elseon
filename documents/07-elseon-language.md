@@ -116,6 +116,13 @@ Mechanism options (see `prompts/features/04-c-header-ingestion.md`):
 libclang, clang AST dumps, or a dedicated C header parser. The kernel
 headers are the conformance corpus.
 
+The survey of prior attempts at an improved C — and what Elseon borrows
+from each — lives in `documents/08-related-work.md`. Two well-known
+candidates are deliberately excluded as models: Rust (entirely different
+surface representation — pure ego, not reason) and D (garbage collection —
+wrong runtime for the kernel). Both remain idea sources under PFE: take
+the idea, leave the surface or runtime.
+
 ## 6. The Compiler: LLVM Backend
 
 Code generation goes through LLVM.
@@ -154,5 +161,7 @@ the compiler's own code, and this repository.
 This document is the seed of phase 1 (language specification). It will grow
 worked examples — a driver stub, a ring buffer, an allocator — and the
 conformance-test plan that maps every guarantee above to a test.
+The related-work survey (`documents/08-related-work.md`) records the prior
+attempts and the ideas Elseon borrows from them.
 
 See `TODO.md` for open questions and the phase plan in `PHASES.md`.

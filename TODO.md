@@ -43,3 +43,6 @@
 * [x] scaffold this project from `00-project-skeleton` (2026-08-28):
       philosophy and language-design documents, feature files, site pages,
       phases, and TODO adapted to Elseon.
+* [x] survey prior attempts at an improved C into `documents/08-related-work.md`;
+      exclude Rust (surface representation) and D (GC runtime) as models,
+      keep both as idea sources; Go excluded by the same GC standard.
