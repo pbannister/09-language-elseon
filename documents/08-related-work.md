@@ -99,3 +99,30 @@ These stay compatible with C and patch its wounds in place:
 - Surveyed and recorded in the Elseon project (phase 1 — research).
 - The borrowable-features list feeds the open questions in `TODO.md` and
   the design document `documents/07-elseon-language.md`.
+- Episode 1-A (the C-comparison study series) is complete: five study
+  notes compare C3, Odin, Hare, Val, and Cake with C as the baseline on
+  the common criteria — `documents/13-c3-vs-c.md`,
+  `documents/14-odin-vs-c.md`, `documents/15-hare-vs-c.md`,
+  `documents/16-val-vs-c.md`, and `documents/17-cake-vs-c.md`.
+- All five candidates classify as idea sources for Elseon; none classifies
+  as a model under the kernel test.
+- The studies deepen and refine this survey's rows: C3 is a documented
+  fork of C2 (one lineage, not two independent rows); Odin is C-shaped but
+  uses type-last declarations and an explicit allocator mechanism with an
+  implicit per-scope default; Hare is spec-first with a QBE backend rather
+  than LLVM and builds real kernels (Helios, Hermes, Ares) with the stock
+  toolchain; Val is Swift-shaped, renamed Hylo in 2023, and remains
+  pre-1.0 and officially unusable; Cake is a Camp 2 front end that
+  transpiles C23 to C89, with compile-time-only ownership checks.
+- The row corrections are recorded in the synthesis; the survey tables
+  above keep the pre-study wording until the human decides to fold the
+  corrections in.
+- The synthesis `documents/18-c-comparison-synthesis.md` pools the five
+  studies: a cross-candidate comparison on the criteria, what was tried
+  before and what worked and did not work across all five, the Elseon use
+  and avoid lists with reasoning and source studies, candidate-drop
+  recommendations for the human to decide, and proposed revisions to
+  `prompts/common/04-c-comparison-criteria.md` (proposals only — the
+  criteria file is unchanged).
+- The synthesis is the input that informs phase 2 (language
+  specification).
