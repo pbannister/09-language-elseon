@@ -22,7 +22,7 @@ work Elseon will never need to redo — PFE applied to compilers.
 - The LLVM version and the API choice (C API vs. C++ API; static vs.
   shared linking) must be pinned and recorded in the project.
 - The `elseon` driver and toolchain live in `sources/`; `make build` builds
-  them from phase 2 onward (site build remains part of `make site`).
+  them from phase 3 onward (site build remains part of `make site`).
 
 ## Behavior
 

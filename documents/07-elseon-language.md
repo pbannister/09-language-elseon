@@ -158,7 +158,7 @@ the compiler's own code, and this repository.
 
 ## 9. Status and Next Steps
 
-This document is the seed of phase 1 (language specification). It will grow
+This document is the seed of phase 2 (language specification). It will grow
 worked examples — a driver stub, a ring buffer, an allocator — and the
 conformance-test plan that maps every guarantee above to a test.
 The related-work survey (`documents/08-related-work.md`) records the prior

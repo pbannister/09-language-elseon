@@ -4,9 +4,10 @@
 #	This Makefile is the human-facing driver.
 #	Each rule calls the appropriate tool instead of reimplementing work:
 #		build:  sh scripts/site-build.sh
-#		        (During phase 1 this target builds the site. From
-#		        phase 2 on it also builds the `elseon` toolchain in
-#		        sources/; see prompts/features/05-llvm-backend.md.)
+#		        (During the research and specification phases this target
+#		        builds the site. From phase 3 on it also builds the
+#		        `elseon` toolchain in sources/; see
+#		        prompts/features/05-llvm-backend.md.)
 #		site:   sh scripts/site-build.sh + sh scripts/site-condense.sh
 #		        (the standard page set; see prompts/features/02-project-pages.md)
 #		clean:  rm generated output

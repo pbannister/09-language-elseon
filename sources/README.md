@@ -6,7 +6,7 @@ The language design is in `documents/07-elseon-language.md`; the
 requirements are the language features in `prompts/features/`
 (`03-language-core.md`, `04-c-header-ingestion.md`, `05-llvm-backend.md`).
 
-## Planned Layout (phase 2 onward)
+## Planned Layout (phase 3 onward)
 
 - `driver/` — the `elseon` command: argument handling, file orchestration,
   and the compile pipeline driver.

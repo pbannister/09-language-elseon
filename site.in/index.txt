@@ -21,5 +21,5 @@ languages since the 1980s.
   <li>Status: active.</li>
   <li>What's working: the project scaffold — language design document,
       feature requirements, phases, and site build.</li>
-  <li>Current phase: 1 — language specification (started).</li>
+  <li>Current phase: 1 — research (started).</li>
 </ul>

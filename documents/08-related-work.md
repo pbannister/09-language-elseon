@@ -96,6 +96,6 @@ These stay compatible with C and patch its wounds in place:
 
 ## Status
 
-- Surveyed and recorded in the Elseon project (phase 1).
+- Surveyed and recorded in the Elseon project (phase 1 — research).
 - The borrowable-features list feeds the open questions in `TODO.md` and
   the design document `documents/07-elseon-language.md`.
