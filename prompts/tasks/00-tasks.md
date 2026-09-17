@@ -7,3 +7,4 @@
 - `05-val-compare-to-c.md` — Study Val vs C (episode 1-A; runs concurrently with 02–04, 06).
 - `06-cake-compare-to-c.md` — Study Cake vs C (episode 1-A; runs concurrently with 02–05).
 - `07-c-comparison-synthesis.md` — Synthesize the C-comparison studies (episode 1-A; after 02–06).
+- `08-c2-compare-to-c3.md` — Study C2 vs C3 (episode 1-A lineage follow-on; after 02 and 07).
