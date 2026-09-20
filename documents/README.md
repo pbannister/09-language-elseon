@@ -21,6 +21,7 @@ The LLM does not load these files as project rules.
 - `21-c-compiler-extensions-inventory.md` — inventory of prior work on extending or modifying C compilers (research input).
 - `22-fork-or-extend-decision.md` — fork-versus-extend decision record for the language base.
 - `23-constructor-destructor-variants.md` — constructor and destructor invocation sites, overt versus hidden, with the design's per-site rulings.
+- `24-scope-exit-mechanisms.md` — clause-level detail for four non-C++ scope-exit mechanisms (companion to 23).
 
 ## Canonical Files
 
