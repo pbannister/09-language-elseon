@@ -29,9 +29,11 @@ Every language feature must pass the Kernel Test:
   memory management.
 - **No hidden allocations:** every allocation is visible in the source;
   the allocator is explicit.
-- **No hidden control flow:** no implicit constructors, no hidden
-  exceptions, no magic behavior; every branch, call, and allocation is
-  visible in the source.
+- **No hidden control flow:** no hidden constructor or destructor
+  invocations, no hidden exceptions, no magic behavior; every branch,
+  call, and allocation is visible in the source.
+  Scope-based construction and destruction are admissible because both
+  boundaries are visible; an invocation the source does not name is not.
 - **Deterministic memory layout:** the programmer controls struct layout,
   padding, alignment, and representation; the language specifies the layout
   rules and the backend honors them.

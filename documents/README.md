@@ -20,6 +20,7 @@ The LLM does not load these files as project rules.
 - `20-lessons-from-elsewhere.md` — human notes on lessons learned elsewhere.
 - `21-c-compiler-extensions-inventory.md` — inventory of prior work on extending or modifying C compilers (research input).
 - `22-fork-or-extend-decision.md` — fork-versus-extend decision record for the language base.
+- `23-constructor-destructor-variants.md` — constructor and destructor invocation sites, overt versus hidden, with the design's per-site rulings.
 
 ## Canonical Files
 

@@ -34,9 +34,10 @@ systems.
 
 Every language feature is admitted only if it passes the Kernel Test:
 
-- **Zero hidden control flow:** no implicit constructors, no hidden
-  exceptions, no "magic" behavior. Every branch, every call, every
-  allocation is visible in the source.
+- **Zero hidden control flow:** no hidden constructor or destructor
+  invocations, no hidden exceptions, no "magic" behavior.
+  Every branch, every call, every allocation is visible in the source.
+  Scope-based construction and destruction are visible and therefore admissible; an invocation the source does not name is not.
 - **Zero runtime / garbage collection:** no background processes, no
   non-deterministic memory management, no allocator the programmer cannot
   see.
@@ -83,15 +84,20 @@ lessons that survived, and rejects the mechanisms that failed:
   navigates by names, not by nested structural shapes.
 - **Interfaces.** Behavior contracts separate *what* an entity offers from
   *how* it is built — but only as compile-time, zero-cost contracts.
-- **Explicit resource management.** Destructor-like scopes exist, but they
-  are explicit: no hidden control flow at scope exit beyond what the source
-  spells out.
+- **Explicit resource management.** An object's lifetime is bounded by its lexical scope: the declaration constructs it, and the end of the scope destroys it.
+  This is C's model for automatic storage duration, made non-trivial, and it is overt — both boundaries are visible in the source.
+  What is excluded is every invocation the source does not show: temporaries, compiler-selected copy and move, and destruction driven by exception unwinding.
+  The class of admissible and inadmissible invocation sites is enumerated in `documents/23-constructor-destructor-variants.md`.
 
 ### Rejected
 
 - **Inheritance hierarchies** (fragile base classes, hidden dispatch).
-- **Implicit constructors/destructors with hidden effects** (hidden control
-  flow).
+- **Virtual dispatch** (no vtables; an overt equivalent such as function
+  pointers held as members is preferred).
+- **Hidden constructor and destructor invocations** — not scope-based
+  construction and destruction, which are overt, but the invocations the
+  source does not name: temporaries, implicit copies and moves, implicit
+  conversions, and unwinding-driven destruction.
 - **Garbage collection** (non-deterministic memory management).
 - **Hidden exceptions** (control flow invisible in the source).
 

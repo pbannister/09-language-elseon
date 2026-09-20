@@ -10,3 +10,4 @@
 - `08-c2-compare-to-c3.md` — Study C2 vs C3 (episode 1-A lineage follow-on; after 02 and 07).
 - `09-c-extension-inventory.md` — Inventory prior work on extending C compilers (relocate to `documents/`).
 - `10-fork-or-extend-decision.md` — Record the fork-versus-extend decision (after 09).
+- `11-constructor-destructor-variants.md` — Inventory constructor and destructor invocation sites (after 10).

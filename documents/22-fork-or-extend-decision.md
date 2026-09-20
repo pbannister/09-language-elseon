@@ -94,37 +94,93 @@ Assessed against the Kernel Test in `documents/07-elseon-language.md` §2:
   The specification's strict scoping and jump barriers are stricter than the raw attribute, which makes the standard-track version the better fit.
 - **Class methods**: coherent if they are compile-time bound — methods on structs, in the style of C2's `Point.add` type functions or C3's value methods — with no dynamic dispatch and no inheritance, which the design document already rejects.
   Dispatch through a vtable on every call is hidden control flow and fails the test.
-- **Constructors**: this is where the request is genuinely underspecified and where the current design document is contradicted.
-  A deterministic, explicitly called initializer is fine.
-  A C++-style constructor that runs implicitly, participates in overload resolution, and is invoked on paths the caller does not see is exactly the "implicit constructors/destructors with hidden effects" the document currently rejects.
+- **Constructors and destructors**: admissible, and explicit syntax is wanted, provided invocation is limited to the two overt boundaries — declaration and scope exit.
+  The design work is not whether to allow them but which of C++'s other invocation sites to forbid; the per-site rulings are in `documents/23-constructor-destructor-variants.md`.
 - **Modules and exports**: the largest new-syntax item, and the one with the clearest reusable machinery underneath (module maps, serialized ASTs, `#include`-to-import translation).
-  It is the strongest candidate for the fork, and it can be deferred without blocking the rest.
+  It requires touching Clang, because C has no import syntax.
 
-Two of the four requests are therefore satisfiable without a fork, one is a design constraint rather than a feature, and only modules and any bespoke class syntax actually require touching Clang.
+With Clang as the established base (§8), the fork question is settled and the remaining work is the delta: rules for classes and methods, rulings on the constructor and destructor invocation sites, and module syntax.
 
-## 7. Contradiction to resolve before any implementation
+## 7. The admissibility boundary for constructors and destructors
 
-`documents/07-elseon-language.md` currently states both of the following:
+An earlier draft of this record read the design document's rejection of "implicit constructors and destructors with hidden effects" as a blanket prohibition.
+That was an over-read, and the maintainer corrected it.
+The qualifying phrase carries the rule: hidden effects and hidden invocation are rejected, not automation.
+The design document and the language-core feature file have been reworded to say this directly (`documents/07-elseon-language.md` §2 and §4, `prompts/features/03-language-core.md`).
+The intended distinction is between **overt** and **hidden**, not between **explicit in a call** and **automatic**.
 
-- Adopted: "Explicit resource management. Destructor-like scopes exist, but they are explicit: no hidden control flow at scope exit beyond what the source spells out."
-- Rejected: "Implicit constructors/destructors with hidden effects (hidden control flow)."
+Overt, and therefore admissible:
 
-The request to add constructors and destructors is a direct change to that position.
-It is defensible — `defer` is deterministic and the kernel already uses its equivalent — but it must be an explicit revision, because the Kernel Test forbids exactly what was requested and the rest of the design document leans on that prohibition.
+- `class C {}; { C v; ... }` — the declaration *is* the constructor, and the closing brace is where the object ceases to exist.
+- This is exactly C's model for primitive types, where automatic storage duration begins at the declaration and ends at the scope exit, except that the constructor and destructor bodies are non-trivial.
 
-## 8. Open decisions
+The concern is not automation. It is invocation the source does not show: the constructor machinery C++ triggers without a declaration or a written call, and the destructor machinery it triggers beyond scope exit.
 
-These are the maintainer's to make, and the record is not complete until they are answered.
+The boundary is therefore about **invocation sites**, not about whether the compiler emits a call. For Elseon's model the rule is: a constructor runs when the source declares an object, and a destructor runs when that object's scope ends.
+Every other invocation site C++ has must be either forbidden or made a written call.
+The survey of those sites is in `documents/23-constructor-destructor-variants.md`, which enumerates them and marks each as overt or hidden.
 
-1. **What kind of destructor?** Lexically scoped and compile-time determinable (`defer` semantics, admitted under a revised Kernel Test), or C++-style RAII with implicit invocation on paths the caller cannot see (not admissible without changing the Kernel Test's meaning)?
-2. **What kind of constructor?** An explicitly called initializer, or implicit initialization with overload resolution?
-3. **What kind of dispatch?** Compile-time-bound methods only, or runtime dispatch through vtables for at least some calls?
-4. **Which rung?** Are rungs 1 through 4 sufficient for the first usable version, deferring rungs 5 and 6 until new syntax or new types are genuinely required?
-5. **Is the front-end principle revised?** `prompts/features/05-llvm-backend.md` asserts Elseon owns the front end; an extension strategy replaces that with ownership of a delta.
+Two boundary cases are worth stating here because they are the ones most likely to be reintroduced by accident:
 
-## 9. Recommendation
+- **Temporaries.** An invisible temporary invokes a constructor and a destructor at a point the source does not name.
+  Whether Elseon admits temporaries, and under what spelling, is an open question, not a settled one.
+- **Copy and move.** C++ invokes copy or move constructors at by-value calls, by-value returns, and container insertion.
+  If Elseon admits copying, it must be a written call rather than a constructor overload selected by the compiler.
 
-Stay on rungs 1 through 4 for as long as the language can be expressed through attributes, `defer`, existing blocks, and existing dialects.
-Adopt `defer` semantics for resource management rather than designing a new destructor mechanism, because it is standard-track, already implemented in Clang, and its scoping rules are stricter than the attribute it generalizes.
-Defer any decision to fork Clang until a concrete construct cannot be expressed on a lower rung; when that happens, follow the Fil-C pattern — a small, localized delta against a single pinned upstream base — rather than the Checked C pattern of a large language surface.
-Treat module syntax as the first construct likely to force that decision, and the constructor question as the first that must be answered on design grounds rather than implementation grounds.
+The design is closer to "C automatic storage duration with non-trivial begin and end code" than to C++'s object model.
+That is a coherent position, and it is the one the rest of this record now assumes.
+
+It is also a position with an existing normative precedent to borrow.
+C++ already guarantees, for automatic variables with side-effecting initialization or destruction, that an implementation "shall not destroy it before the end of its block nor eliminate it as an optimization, even if it appears to be unused," with copy and move elision the only exception ([\[basic.stc.auto\]/2](https://eel.is/c++draft/basic.stc.auto)).
+Elseon's scope boundary should carry a guarantee of that strength rather than leave the boundary to the optimizer.
+The Objective-C ARC precedent shows the failure mode: ARC makes local `__strong` lifetimes imprecise by default and requires `objc_precise_lifetime` to force release at the end of the formal lifetime ([Clang ARC spec](https://clang.llvm.org/docs/AutomaticReferenceCounting.html)).
+A boundary the optimizer may move is not an overt boundary.
+
+The per-site rulings that follow from this are in `documents/23-constructor-destructor-variants.md`.
+
+## 8. Decisions taken and questions remaining
+
+**Decided:**
+
+1. **Base: Clang.** The language starts from Clang rather than a fresh front end.
+   This settles rung 6 in the ladder above; the work is a delta against Clang, and the front-end ownership principle in `prompts/features/05-llvm-backend.md` is superseded.
+2. **Dispatch: no vtables.** Class methods are not dispatched through a vtable.
+   An overt equivalent, such as function pointers held as class members, is the preferred direction.
+   This removes the largest source of hidden call targets, and it rules out virtual destructors entirely.
+3. **Surface: explicit syntax** for constructors, destructors, and modules, rather than attributes alone.
+   The mechanism exists at the lower rungs, but the syntax is the part that must be designed.
+
+**Open:**
+
+1. **Where exactly is the admissibility line for constructors and destructors?** The overt/hidden distinction is settled in principle (§7); the per-invocation-site ruling depends on the survey in `documents/23-constructor-destructor-variants.md`.
+2. **Temporaries:** admitted or forbidden? If admitted, how are they spelled, and does their destruction happen at the end of a full expression?
+3. **Copy and move:** is there a copy constructor mechanism at all, and is copying a written call rather than a compiler-selected overload?
+4. **IR target:** LLVM IR directly, or ClangIR with a lowering step (§9)?
+5. **Module syntax:** what do `module` and `export` look like, given that Clang's module maps supply the semantics but no C syntax?
+
+## 9. ClangIR as a possible IR target
+
+ClangIR (CIR) is an MLIR-based, higher-level representation that sits between Clang's AST and LLVM IR.
+It captures more C and C++ source semantics than LLVM IR does, which enables source-level diagnostics, static analysis, and optimizations that are awkward once code has been lowered to LLVM IR.
+It began at Meta in October 2021, entered the LLVM incubator, and was accepted for upstreaming in January 2024; it now lives in the `llvm-project` repository and is built but not used by default, behind `-fclangir`.
+
+Two properties are relevant to this language:
+
+- **Scopes are explicit.** CIR has a `cir.scope` operation whose region boundaries correspond to source lexical scopes.
+  A destructor-at-scope-exit is therefore visible as a region boundary in the IR rather than reconstructed from control-flow graphs, which suits a design whose whole point is that scope exit is where objects end.
+- **Cleanup is tied to exception paths.** CIR attaches `cleanup` regions to calls explicitly marked as possibly throwing (`cir.call exception ... cleanup { ... }`).
+  A language with no exceptions does not need that machinery, which suggests the destructor lowering would be ordinary code inside the scope region.
+
+Against that, CIR's own status page reports that C is mostly covered but C++ is missing cleanup and exception-handling parts, that ABI calling-convention lowering is still work in progress behind `-fclangir-call-conv-lowering`, and that Objective-C is unsupported.
+Its targets are Linux and macOS on x86_64 and AArch64, plus SPIR-V.
+
+Recommendation: target LLVM IR first, because it is stable, mature, and what the kernel test can be verified against, and treat ClangIR as a later option for its diagnostic and analysis value.
+Either way, the front end remains Clang, so this choice can be deferred and revisited without changing the base.
+
+## 10. Recommendation
+
+Start from Clang as decided, and design the delta rather than the base.
+Adopt `defer` semantics as the reference behaviour for scope-exit code, because it is standard-track, already implemented behind `-fdefer-ts`, and its lexical scoping and jump barriers are stricter than the attribute it generalizes; then give constructors and destructors explicit syntax whose invocation sites are limited to declaration and scope exit.
+Keep the admissibility boundary in terms of invocation sites, and rule each site in `documents/23-constructor-destructor-variants.md` explicitly rather than by implication.
+Target LLVM IR initially and hold ClangIR in reserve.
+Follow the Fil-C pattern for the fork itself: a small, localized delta against a single pinned upstream base, rather than the large-surface pattern that left Checked C dormant.
