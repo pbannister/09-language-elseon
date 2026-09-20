@@ -15,6 +15,11 @@ The LLM does not load these files as project rules.
 - `06-project-pages.md` — project-pages publishing conventions (summary; canonical version in the homelab).
 - `07-elseon-language.md` — the Elseon language design: philosophy, the kernel test, syntax family, OOP lessons, and C-header ingestion.
 - `08-related-work.md` — survey of prior attempts at an improved C, the exclusions (Rust, D), and the ideas Elseon borrows.
+- `13-c3-vs-c.md` … `18-c-comparison-synthesis.md` — the episode 1-A C-comparison studies and their synthesis.
+- `19-c2-vs-c3.md` — the C2-versus-C3 lineage study (C3 is documented as a fork of C2).
+- `20-lessons-from-elsewhere.md` — human notes on lessons learned elsewhere.
+- `21-c-compiler-extensions-inventory.md` — inventory of prior work on extending or modifying C compilers (research input).
+- `22-fork-or-extend-decision.md` — fork-versus-extend decision record for the language base.
 
 ## Canonical Files
 
