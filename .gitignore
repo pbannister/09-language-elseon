@@ -5,6 +5,7 @@
 dataflow.out/*
 logs/*
 site.out/*
+sources/llvm-project/
 
 !dataflow.out/.gitkeep
 !logs/.gitkeep
