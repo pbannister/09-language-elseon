@@ -12,3 +12,4 @@
 - `10-fork-or-extend-decision.md` — Record the fork-versus-extend decision (after 09).
 - `11-constructor-destructor-variants.md` — Inventory constructor and destructor invocation sites (after 10).
 - `12-scope-exit-mechanisms.md` — Record scope-exit mechanism details (relocate to `documents/`).
+- `13-site-verify-strict.md` — Add a strict missing-page check for the site build.

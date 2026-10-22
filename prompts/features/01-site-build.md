@@ -16,11 +16,13 @@ The Site Build feature provides the script that converts `site.in/` into `site.o
 - `SITE-BUILD-R006` — The script must be a POSIX shell script.
 - `SITE-BUILD-R007` — The HTML page structure must live in `site.in/template.html`, not in the build script.
 - `SITE-BUILD-R008` — `site.in/template.html` must contain the marker line `<!-- SITE-CONTENT -->` where page content is inserted.
+- `SITE-BUILD-R009` — `scripts/site-verify.sh` must check that each `site.in/*.txt` input has a matching `site.out/<name>.html` page; it lists every missing page and, with `--strict`, exits nonzero when any page is missing.
 
 ## Behavior
 
 - Running the script recreates `site.out/` from `site.in/`.
 - Re-running the script overwrites existing output deterministically.
+- Running the verifier with `--strict` exits nonzero when a generated page is missing.
 
 ## Dependencies
 
