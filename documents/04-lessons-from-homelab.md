@@ -48,12 +48,12 @@ Each lesson names where the skeleton now encodes it.
 
 - Two incidents (an L2 loop, a broadcast storm) shared the same pattern: changes to a live network without staged verification.
 - The lessons: stage a fallback, verify device behavior empirically, apply in small verified increments, agree an emergency brake, record the incident with lessons.
-- Encoded in: `prompts/common/02-universal-rules.md` (Risky-Operations Rules).
+- Encoded in: `prompts/common/01-universal-rules.md` (Risky-Operations Rules).
 
 ## 8. Owner privacy boundaries need a first-class mechanism
 
 - The homelab declared old work files off-limits; the directive held.
-- Encoded in: `prompts/common/02-universal-rules.md` (Privacy-Boundary Rules), `README.md`.
+- Encoded in: `prompts/common/01-universal-rules.md` (Privacy-Boundary Rules), `README.md`.
 
 ## 9. Worktrees and records serve different concurrency
 

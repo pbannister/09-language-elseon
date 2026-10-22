@@ -10,7 +10,7 @@ This file is loaded by Aider at launch through `.aider.conf.yml`.
 Aider must follow prompts/01-contract.md.
 Aider must follow prompts/02-workflow.md.
 Aider must follow prompts/03-conventions.md.
-Aider must follow prompts/common/02-universal-rules.md.
+Aider must follow prompts/common/01-universal-rules.md.
 
 ## File Boundary Enforcement
 
