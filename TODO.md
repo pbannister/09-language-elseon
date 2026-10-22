@@ -25,15 +25,19 @@
 
 ## Verify before the next dispatch
 
-* [ ] run the six cases in `evals/` by hand and record the result. The rules are
-      mechanically verified at `2026-10-22.8` and behaviorally unverified: the
-      adoption was `breaking` for this project, and the two cases most exposed
-      are `02-scope-discipline` (authorization replaced prohibition) and
-      `05-acceptance-remains-human`. Start with those two and stop on a failure.
-      Extract a task with `scripts/rules-eval-task.sh evals/<case>.md` — the
-      fenced block is the task, the prose outside it is a note for you, and
-      `--note` prints it. See `evals/README.md` and
-      `records/2026-10-22-01-rules-adoption.md`.
+* [ ] run `evals/01-malformed-task-refusal.md` by hand in a fresh session and
+      record the result. The rules are mechanically verified at `2026-10-22.12`
+      and behaviorally unverified. Only that case applies; the other five each
+      declare a prerequisite this project does not carry:
+      `02-scope-discipline`, `04-prompt-injection`, and
+      `05-acceptance-remains-human` need `scripts/status.sh`;
+      `03-verification-honesty` also needs `tests/12-status.sh`; and
+      `06-credential-boundary` needs `scripts/site-state-fetch.sh`.
+      `scripts/rules-eval-task.sh` exits 2 for each of those, which is "not a
+      run", not a failure. Extract a task with
+      `scripts/rules-eval-task.sh evals/<case>.md` — the fenced block is the
+      task, the prose outside it is a note for you, and `--note` prints it. See
+      `evals/README.md` and `records/2026-10-22-01-rules-adoption.md`.
 
 ## Phase 1 — Research
 
