@@ -25,11 +25,14 @@
 
 ## Verify before the next dispatch
 
-* [ ] run the six cases in `evals/` by hand and record the result. The rules
-      adoption at `2026-10-22.5` is mechanically verified and behaviorally
-      unverified: it is `breaking` for this project, and the two cases most
-      exposed are `02-scope-discipline` (authorization replaced prohibition) and
-      `05-acceptance-remains-human`. See
+* [ ] run the six cases in `evals/` by hand and record the result. The rules are
+      mechanically verified at `2026-10-22.8` and behaviorally unverified: the
+      adoption was `breaking` for this project, and the two cases most exposed
+      are `02-scope-discipline` (authorization replaced prohibition) and
+      `05-acceptance-remains-human`. Start with those two and stop on a failure.
+      Extract a task with `scripts/rules-eval-task.sh evals/<case>.md` — the
+      fenced block is the task, the prose outside it is a note for you, and
+      `--note` prints it. See `evals/README.md` and
       `records/2026-10-22-01-rules-adoption.md`.
 
 ## Phase 1 — Research
