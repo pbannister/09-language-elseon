@@ -1,6 +1,9 @@
 # Task: Inventory constructor and destructor invocation sites
 
 ## TASK-DESCRIPTION
+- Create: `documents/23-constructor-destructor-variants.md`
+- Inspect: `documents/22-fork-or-extend-decision.md`
+
 Create `documents/23-constructor-destructor-variants.md`.
 Enumerate every site in C++ where a constructor or destructor is
 invoked, classify each as overt (visible at the declaration, or an
@@ -39,5 +42,14 @@ imprecise by default, so scope exit is not a guaranteed boundary
 (`https://clang.llvm.org/docs/AutomaticReferenceCounting.html`).
 
 ## TASK-FILES
-- `documents/23-constructor-destructor-variants.md` — new
-- `documents/22-fork-or-extend-decision.md` — existing (inspect only)
+
+| Operation | Path |
+|---|---|
+| create | `documents/23-constructor-destructor-variants.md` |
+| inspect | `documents/22-fork-or-extend-decision.md` |
+
+## TASK-VERIFY
+- Run: `make test` from the repository root.
+- Expected: exit status 0.
+
+OUTPUT: the content of `documents/23-constructor-destructor-variants.md`, as TASK-OUTPUT describes, and nothing else.

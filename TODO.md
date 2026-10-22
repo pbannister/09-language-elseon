@@ -23,6 +23,15 @@
 * [ ] decide the conformance-test tiering: portable tests, tool-gated tests
       (require LLVM), and live-state tests (compile against a real kernel tree).
 
+## Verify before the next dispatch
+
+* [ ] run the six cases in `evals/` by hand and record the result. The rules
+      adoption at `2026-10-22.5` is mechanically verified and behaviorally
+      unverified: it is `breaking` for this project, and the two cases most
+      exposed are `02-scope-discipline` (authorization replaced prohibition) and
+      `05-acceptance-remains-human`. See
+      `records/2026-10-22-01-rules-adoption.md`.
+
 ## Phase 1 — Research
 
 Research precedes the language specification; its findings feed the open

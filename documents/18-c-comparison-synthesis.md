@@ -6,7 +6,7 @@
 
 This document compares the five studied candidates — C3, Odin, Hare, Val
 (now Hylo), and Cake — on the criteria in
-`prompts/common/04-c-comparison-criteria.md` (authoritative; unmodified).
+`prompts/11-c-comparison-criteria.md` (authoritative; unmodified).
 Across the five it states what has been tried before, what worked, and what
 did not work; it selects the ideas Elseon should use and the ideas Elseon
 should avoid, each with reasoning and the source study; it recommends
@@ -18,7 +18,7 @@ criteria file is not modified).
 
 Inputs and their roles:
 
-- `prompts/common/04-c-comparison-criteria.md` — authoritative study
+- `prompts/11-c-comparison-criteria.md` — authoritative study
   criteria; compared against, not modified.
 - `documents/13-c3-vs-c.md` (C3 study), `documents/14-odin-vs-c.md` (Odin
   study), `documents/15-hare-vs-c.md` (Hare study),
@@ -886,7 +886,7 @@ recommendations for the human to decide").
 
 ## 8. Proposed criteria revisions (proposals only)
 
-Proposed revisions to `prompts/common/04-c-comparison-criteria.md` for the
+Proposed revisions to `prompts/11-c-comparison-criteria.md` for the
 human to consider. The file is not modified by this task. Each proposal
 names the evidence that showed the criterion weak or missing.
 
@@ -953,7 +953,7 @@ names the evidence that showed the criterion weak or missing.
 - [Cake study](17-cake-vs-c.md) — `documents/17-cake-vs-c.md` (inspect only).
 - [Survey](08-related-work.md) — `documents/08-related-work.md`; its Status
   section is updated by this task; the survey body is otherwise untouched.
-- [Criteria](04-c-comparison-criteria.md) — `prompts/common/04-c-comparison-criteria.md`
+- [Criteria](04-c-comparison-criteria.md) — `prompts/11-c-comparison-criteria.md`
   (authoritative; not modified).
 - [Language doc](07-elseon-language.md) — `documents/07-elseon-language.md`;
   the kernel test and syntax-family wording used as the comparison standard.

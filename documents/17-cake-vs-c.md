@@ -1,7 +1,7 @@
 # Cake versus C
 
 This note compares Cake to C as the baseline, per the criteria in
-`prompts/common/04-c-comparison-criteria.md`, and feeds the synthesis task
+`prompts/11-c-comparison-criteria.md`, and feeds the synthesis task
 `prompts/tasks/07-c-comparison-synthesis.md`.
 All documentation quotes come from the Cake GitHub repository
 (https://github.com/thradams/cake), because the official site
@@ -519,4 +519,4 @@ Repository context (inspected, not modified):
 - `documents/08-related-work.md` — Camp 2 classification verified and refined
   in section 1 of this note.
 - `documents/07-elseon-language.md` — the kernel test and Elseon's principles.
-- `prompts/common/04-c-comparison-criteria.md` — the authoritative criteria.
+- `prompts/11-c-comparison-criteria.md` — the authoritative criteria.

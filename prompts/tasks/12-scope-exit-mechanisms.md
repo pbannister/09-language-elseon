@@ -1,6 +1,9 @@
 # Task: Record scope-exit mechanism details
 
 ## TASK-DESCRIPTION
+- Create: `documents/24-scope-exit-mechanisms.md`
+- Modify: `scope-exit-mechanisms-report.md`
+
 Create `documents/24-scope-exit-mechanisms.md`.
 Place the scope-exit mechanism reference in `documents/`, where
 human-consumption documents belong, instead of the repository root.
@@ -32,5 +35,14 @@ a statement bound to the innermost block, with jumps into or out of it
 constrained, so it registers only a call the programmer wrote.
 
 ## TASK-FILES
-- `documents/24-scope-exit-mechanisms.md` — new (relocated)
-- `scope-exit-mechanisms-report.md` — existing (delete from root)
+
+| Operation | Path |
+|---|---|
+| create | `documents/24-scope-exit-mechanisms.md` |
+| modify | `scope-exit-mechanisms-report.md` |
+
+## TASK-VERIFY
+- Run: `make test` from the repository root.
+- Expected: exit status 0.
+
+OUTPUT: the content of `documents/24-scope-exit-mechanisms.md`, as TASK-OUTPUT describes, and nothing else.

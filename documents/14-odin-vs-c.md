@@ -689,4 +689,4 @@ Community and third-party sources (outcome observations):
 Internal repository context inspected for this study (read-only):
 `documents/08-related-work.md` (classification under verification),
 `documents/07-elseon-language.md` (kernel-test wording), and
-`prompts/common/04-c-comparison-criteria.md` (study criteria).
+`prompts/11-c-comparison-criteria.md` (study criteria).

@@ -1,6 +1,6 @@
 # C3 vs C
 
-Study note for the episode 1-A series, per `prompts/common/04-c-comparison-criteria.md`.
+Study note for the episode 1-A series, per `prompts/11-c-comparison-criteria.md`.
 Baseline is C.
 Scope: what C3 tried, what worked, what did not work, and what Elseon should borrow or avoid.
 Primary sources are the official site ([c3-lang.org](https://c3-lang.org)), its documentation, the C3 blog, and the compiler repository ([c3lang/c3c](https://github.com/c3lang/c3c)).

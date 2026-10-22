@@ -1,7 +1,7 @@
 # Val vs C
 
 This study compares the Val language to C as the baseline, on the ten
-dimensions of `prompts/common/04-c-comparison-criteria.md`.
+dimensions of `prompts/11-c-comparison-criteria.md`.
 It feeds the synthesis task
 `prompts/tasks/07-c-comparison-synthesis.md`, which pools five such studies
 (C3, Odin, Hare, Val, Cake).

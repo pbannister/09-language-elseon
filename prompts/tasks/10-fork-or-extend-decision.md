@@ -1,6 +1,12 @@
 # Task: Record the fork-versus-extend decision
 
 ## TASK-DESCRIPTION
+- Create: `documents/22-fork-or-extend-decision.md`
+- Inspect: `documents/21-c-compiler-extensions-inventory.md`
+- Inspect: `documents/07-elseon-language.md`
+- Inspect: `documents/19-c2-vs-c3.md`
+- Inspect: `prompts/features/05-llvm-backend.md`
+
 Create `documents/22-fork-or-extend-decision.md`.
 Record the decision analysis for a change of direction: extending an
 existing C compiler instead of building a new language from a fresh
@@ -44,8 +50,25 @@ requires new syntax or new types, and to follow a small localized fork
 pattern if a fork becomes necessary.
 
 ## TASK-FILES
-- `documents/22-fork-or-extend-decision.md` — new
-- `documents/21-c-compiler-extensions-inventory.md` — existing (inspect)
-- `documents/07-elseon-language.md` — existing (inspect only)
-- `documents/19-c2-vs-c3.md` — existing (inspect only)
-- `prompts/features/05-llvm-backend.md` — existing (inspect only)
+
+| Operation | Path |
+|---|---|
+| create | `documents/22-fork-or-extend-decision.md` |
+| inspect | `documents/21-c-compiler-extensions-inventory.md` |
+| inspect | `documents/07-elseon-language.md` |
+| inspect | `documents/19-c2-vs-c3.md` |
+| inspect | `prompts/features/05-llvm-backend.md` |
+
+## TASK-VERIFY
+- Run: `make test` from the repository root.
+- Expected: exit status 0.
+
+## TASK-FEATURES
+- `prompts/features/05-llvm-backend.md`
+
+## TASK-ACCEPTANCE
+- `LLVM-R001`
+- `LLVM-R002`
+- `LLVM-R003`
+
+OUTPUT: the content of `documents/22-fork-or-extend-decision.md`, as TASK-OUTPUT describes, and nothing else.

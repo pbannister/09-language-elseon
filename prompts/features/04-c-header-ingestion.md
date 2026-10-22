@@ -10,18 +10,18 @@ safety guarantees applied at the boundary.
 
 ## Requirements
 
-- The language must provide an import form for C headers that is a
+- `C-HEADER-R001` — The language must provide an import form for C headers that is a
   *semantic* operation, not a textual `#include`.
-- An imported header must expose, with Elseon semantics:
+- `C-HEADER-R002` — An imported header must expose, with Elseon semantics:
   - types, as nominal Elseon types with deterministic layout;
   - constants, as typed values;
   - function signatures, as checked call boundaries (arity, types, and
     nullability where the header or annotations make it knowable).
-- The import must not require hand-written mirror declarations: Elseon
+- `C-HEADER-R003` — The import must not require hand-written mirror declarations: Elseon
   uses the header as the single source of truth.
-- The import boundary must be checked: mismatches between an Elseon call
+- `C-HEADER-R004` — The import boundary must be checked: mismatches between an Elseon call
   and the C signature must be compile-time errors.
-- The mechanism must handle the kernel header corpus (including its
+- `C-HEADER-R005` — The mechanism must handle the kernel header corpus (including its
   preprocessor idiom: macros, conditional compilation, `__attribute__`,
   and type re-export chains) with a declared conformance subset.
 

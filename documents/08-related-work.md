@@ -122,7 +122,7 @@ These stay compatible with C and patch its wounds in place:
   before and what worked and did not work across all five, the Elseon use
   and avoid lists with reasoning and source studies, candidate-drop
   recommendations for the human to decide, and proposed revisions to
-  `prompts/common/04-c-comparison-criteria.md` (proposals only — the
+  `prompts/11-c-comparison-criteria.md` (proposals only — the
   criteria file is unchanged).
 - The synthesis is the input that informs phase 2 (language
   specification).

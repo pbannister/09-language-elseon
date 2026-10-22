@@ -9,19 +9,19 @@ work Elseon will never need to redo — PFE applied to compilers.
 
 ## Requirements
 
-- The compiler must lower Elseon through LLVM for code generation.
-- Deterministic memory layout is a front-end contract: semantic analysis
+- `LLVM-R001` — The compiler must lower Elseon through LLVM for code generation.
+- `LLVM-R002` — Deterministic memory layout is a front-end contract: semantic analysis
   decides representation; conformance tests check the backend against the
   promised layout (struct layout, padding, alignment).
-- The generated code must satisfy the Kernel Test: no runtime, no GC, no
+- `LLVM-R003` — The generated code must satisfy the Kernel Test: no runtime, no GC, no
   hidden allocations, no hidden control flow beyond what the source spells
   out.
-- The toolchain must be kernel-adjacent: buildable with a pinned LLVM
+- `LLVM-R004` — The toolchain must be kernel-adjacent: buildable with a pinned LLVM
   version, with no runtime dependency beyond what a kernel build already
   accepts.
-- The LLVM version and the API choice (C API vs. C++ API; static vs.
+- `LLVM-R005` — The LLVM version and the API choice (C API vs. C++ API; static vs.
   shared linking) must be pinned and recorded in the project.
-- The `elseon` driver and toolchain live in `sources/`; `make build` builds
+- `LLVM-R006` — The `elseon` driver and toolchain live in `sources/`; `make build` builds
   them from phase 3 onward (site build remains part of `make site`).
 
 ## Behavior

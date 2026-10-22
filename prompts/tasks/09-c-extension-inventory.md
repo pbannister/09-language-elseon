@@ -1,6 +1,9 @@
 # Task: Inventory prior work on extending C compilers
 
 ## TASK-DESCRIPTION
+- Create: `documents/21-c-compiler-extensions-inventory.md`
+- Modify: `c-compiler-extensions-inventory.md`
+
 Create `documents/21-c-compiler-extensions-inventory.md`.
 Place the research inventory produced during the fork-versus-extend
 investigation in the `documents/` directory, where human-consumption
@@ -38,5 +41,14 @@ and
 `https://releases.llvm.org/23.1.0/tools/clang/docs/ClangCommandLineReference.html`.
 
 ## TASK-FILES
-- `documents/21-c-compiler-extensions-inventory.md` — new (relocated)
-- `c-compiler-extensions-inventory.md` — existing (delete from root)
+
+| Operation | Path |
+|---|---|
+| create | `documents/21-c-compiler-extensions-inventory.md` |
+| modify | `c-compiler-extensions-inventory.md` |
+
+## TASK-VERIFY
+- Run: `make test` from the repository root.
+- Expected: exit status 0.
+
+OUTPUT: the content of `documents/21-c-compiler-extensions-inventory.md`, as TASK-OUTPUT describes, and nothing else.
